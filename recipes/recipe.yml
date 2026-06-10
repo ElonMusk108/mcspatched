@@ -1,19 +1,16 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: mcspatched-bazzite
-description: Bazzite with a toggleable mac80211 MCS validation patch.
+name: mcspatched-bazzite-gnome-nvidia-open
+description: Bazzite GNOME Nvidia Open with mac80211 MCS validation patch.
 alt-tags:
   - branch-placeholder
-base-image: ghcr.io/ublue-os/bazzite
-image-version: latest
-
+base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia-open
+image-version: stable
 modules:
   - type: copy
     from: ghcr.io/benem3000/mac80211-carrier:tag-placeholder
     src: /rpms/mac80211-kmod.rpm
     dest: /tmp/mac80211-kmod.rpm
-
   - type: rpm-ostree
     install:
       - /tmp/mac80211-kmod.rpm
-
   - type: signing
