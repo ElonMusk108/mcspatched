@@ -80,7 +80,7 @@ jobs:
           MOK_PRIVATE_KEY: ${{ secrets.MOK_PRIVATE_KEY }}
         run: |
           TAG=${{ needs.check-version.outputs.tag }}
-          REPO=ghcr.io/${{ github.repository_owner }}/mac80211-carrier
+          REPO=ghcr.io/$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')/mac80211-carrier
           
           podman build \
             --build-arg BAZZITE_VERSION=latest \
